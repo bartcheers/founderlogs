@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="118px" height="24px" viewBox="0 0 118 24" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 51.2 (57519) - http://www.bohemiancoding.com/sketch -->
+    <title>Cpu hook</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Cpu-hook" transform="translate(0.000000, 1.000000)" stroke="#000000" stroke-width="2">
+            <g id="cpu-(1)" transform="translate(12.000000, 0.000000)" stroke-linecap="round" stroke-linejoin="round">
+                <rect id="Rectangle-path" x="0" y="8" width="6" height="6"></rect>
+                <path d="M0,0 L0,3" id="Shape"></path>
+                <path d="M6,0 L6,3" id="Shape"></path>
+                <path d="M0,19 L0,22" id="Shape"></path>
+                <path d="M6,19 L6,22" id="Shape"></path>
+            </g>
+            <rect id="Inner" fill-rule="nonzero" x="12" y="8" width="6" height="6" rx="0.02"></rect>
+            <polyline id="Line" stroke-linecap="round" stroke-linejoin="round" fill-rule="nonzero" points="7 5 7 3 23 3 23 5"></polyline>
+            <polyline id="Line" stroke-linecap="round" stroke-linejoin="round" fill-rule="nonzero" transform="translate(15.000000, 18.000000) scale(1, -1) translate(-15.000000, -18.000000) " points="7 19 7 17 23 17 23 19"></polyline>
+            <rect id="Inner" fill-rule="nonzero" x="12" y="8" width="6" height="6" rx="0.02"></rect>
+            <rect id="Inner" fill-rule="nonzero" x="89" y="8" width="6" height="6" rx="0.02"></rect>
+            <path d="M23,8 L23,14" id="Line-4" stroke-linecap="round" fill-rule="nonzero"></path>
+            <path d="M29,8 L29,14" id="Line-4" stroke-linecap="round" fill-rule="nonzero"></path>
+            <path d="M23,14 L29,14" id="Shape" stroke-linecap="round" stroke-linejoin="round"></path>
+            <path d="M100,8 L100,14" id="Line-4" stroke-linecap="round" fill-rule="nonzero"></path>
+            <path d="M106,8 L106,19" id="Line-4" stroke-linecap="round" fill-rule="nonzero"></path>
+            <path d="M100,14 L106,14" id="Shape" stroke-linecap="round" stroke-linejoin="round"></path>
+            <path d="M100,19 L106,19" id="Shape" stroke-linecap="round" stroke-linejoin="round"></path>
+            <path d="M100,8 L106,8" id="Shape" stroke-linecap="round" stroke-linejoin="round"></path>
+            <path d="M67,8 L67,14" id="Line-4" stroke-linecap="round" fill-rule="nonzero"></path>
+            <path d="M67,8 L73,8" id="Shape" stroke-linecap="round" stroke-linejoin="round"></path>
+            <path d="M78,14 L84,14" id="Shape" stroke-linecap="round" stroke-linejoin="round"></path>
+            <path d="M56,8 L56,14" id="Line-4" stroke-linecap="round" fill-rule="nonzero"></path>
+            <path d="M62,8 L62,11" id="Line-4" stroke-linecap="round" fill-rule="nonzero"></path>
+            <path d="M56,14 L62,14" id="Shape" stroke-linecap="round" stroke-linejoin="round"></path>
+            <path d="M56,8 L62,8" id="Shape" stroke-linecap="round" stroke-linejoin="round"></path>
+            <path d="M56,11 L62,11" id="Shape" stroke-linecap="round" stroke-linejoin="round"></path>
+            <path d="M111,8 L111,11" id="Line-4" stroke-linecap="round" fill-rule="nonzero"></path>
+            <path d="M117,11 L117,14" id="Line-4" stroke-linecap="round" fill-rule="nonzero"></path>
+            <path d="M111,14 L117,14" id="Shape" stroke-linecap="round" stroke-linejoin="round"></path>
+            <path d="M111,8 L117,8" id="Shape" stroke-linecap="round" stroke-linejoin="round"></path>
+            <path d="M111,11 L117,11" id="Shape" stroke-linecap="round" stroke-linejoin="round"></path>
+            <path d="M45,8 L45,14" id="Line-4" stroke-linecap="round" fill-rule="nonzero"></path>
+            <path d="M51,3 L51,14" id="Line-4" stroke-linecap="round" fill-rule="nonzero"></path>
+            <path d="M45,14 L51,14" id="Shape" stroke-linecap="round" stroke-linejoin="round"></path>
+            <path d="M45,8 L51,8" id="Shape" stroke-linecap="round" stroke-linejoin="round"></path>
+            <path d="M34,8 L34,14" id="Line-4" stroke-linecap="round" fill-rule="nonzero"></path>
+            <path d="M40,8 L40,14" id="Line-4" stroke-linecap="round" fill-rule="nonzero"></path>
+            <path d="M34,8 L40,14" id="Shape" stroke-linecap="round" stroke-linejoin="round"></path>
+            <g id="F" transform="translate(0.000000, 7.000000)" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M1,1 C1,1 1,2.98304437 1,5.26517105 C1,8.35793803 1,12 1,12" id="Line-4" fill-rule="nonzero"></path>
+                <path d="M1,7 L7,7" id="Shape"></path>
+                <path d="M1,1 L7,1" id="Shape" transform="translate(4.000000, 1.000000) scale(-1, 1) translate(-4.000000, -1.000000) "></path>
+            </g>
+            <path d="M78,3 C78,3 78,14 78,14" id="Line-4" stroke-linecap="round" stroke-linejoin="round" fill-rule="nonzero"></path>
+            <path d="M78,14 L84,14" id="Shape" stroke-linecap="round" stroke-linejoin="round" transform="translate(81.000000, 14.000000) scale(-1, 1) translate(-81.000000, -14.000000) "></path>
+            <path d="M81,14 L84,14" id="Shape" stroke-linecap="round" stroke-linejoin="round" transform="translate(82.500000, 14.500000) scale(-1, 1) translate(-82.500000, -14.500000) "></path>
+        </g>
+    </g>
+</svg>
