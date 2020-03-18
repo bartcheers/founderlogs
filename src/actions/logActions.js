@@ -5,7 +5,7 @@ export const createLog = logData => {
       .collection('logs')
       .add({ ...logData, userID: 'TODO' })
       .then(() => {
-        // Todo: consider updating state here vs via websocket
+        // Todo: consider updating state here vs via websocket (current)
       })
       .catch(err => {
         // Todo: Handle error

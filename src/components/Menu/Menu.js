@@ -57,7 +57,7 @@ Menu.propTypes = {
 
 const mapStateToProps = state => {
   return {
-    activeView: state.menuActiveView,
+    activeView: state.menu,
   };
 };
 

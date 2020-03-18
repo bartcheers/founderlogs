@@ -4,9 +4,9 @@ import './index.css';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
 import { Provider } from 'react-redux';
-import { createStore, applyMiddleware, compose } from 'redux';
+import { createStore, applyMiddleware } from 'redux';
 import thunk from 'redux-thunk';
-import allReducers from './reducers';
+import rootReducer from './reducers';
 import { createFirestoreInstance, getFirestore, reduxFirestore } from 'redux-firestore';
 import { ReactReduxFirebaseProvider, getFirebase } from 'react-redux-firebase';
 import fbConfig from './config/fbConfig';
@@ -16,7 +16,7 @@ import { composeWithDevTools } from 'redux-devtools-extension';
 const initialState = {};
 
 const store = createStore(
-  allReducers,
+  rootReducer,
   initialState,
   composeWithDevTools(
     applyMiddleware(thunk.withExtraArgument({ getFirestore, getFirebase })),

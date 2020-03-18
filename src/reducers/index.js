@@ -1,16 +1,14 @@
 import { combineReducers } from 'redux';
-import simulationScoreReducer from './simulationScore';
-import simulationBuyIn from './simulationBuyIn';
-import menuActiveViewReducer from './menuActiveView';
+import simulation from './simulationReducer';
+import menu from './menuReducer';
 import voteReducer from './voteReducer';
 import { firestoreReducer } from 'redux-firestore';
 
-const allReducers = combineReducers({
-  simulationScore: simulationScoreReducer,
-  simulationBuyIn,
-  menuActiveView: menuActiveViewReducer,
+const rootReducer = combineReducers({
+  simulation,
+  menu,
   vote: voteReducer,
   firestore: firestoreReducer,
 });
 
-export default allReducers;
+export default rootReducer;

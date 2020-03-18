@@ -1,6 +1,6 @@
 export const setActiveView = index => {
   return {
-    type: 'setActiveView',
+    type: 'SET_ACTIVE_VIEW',
     payload: index,
   };
 };

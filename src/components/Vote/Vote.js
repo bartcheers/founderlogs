@@ -15,6 +15,8 @@ class Vote extends Component {
       feedbackB: '',
     };
 
+    console.log('state in vote', this.state);
+
     this.onChange = this.onChange.bind(this);
     this.onVote = this.onVote.bind(this);
   }
@@ -27,9 +29,11 @@ class Vote extends Component {
     e.preventDefault();
 
     const vote = {
-      vote: this.state.vote,
       feedbackA: this.state.feedbackA,
       feedbackB: this.state.feedbackB,
+      voteFor: 'LOGID GOES HERE', // Todo: replace
+      voteAgainst: 'LOGID GOES HERE', // Todo: replace
+      timeStamp: 'TIMESTAMP GOES HERE', // Todo: Find out if we can access FB native timestamp instead.
     };
 
     this.props.castVote(vote);
@@ -54,7 +58,7 @@ class Vote extends Component {
     let logList;
     let pickedLogs = [];
 
-    if (typeof logs === 'object') {
+    if (typeof logs === 'object' && logs !== null) {
       logList = Object.values(logs);
 
       const pickA = this.pickRandom(logList.length, null);
@@ -69,7 +73,7 @@ class Vote extends Component {
         <div className='horizontal log-wrap'>
           {pickedLogs.map((log, index) => {
             return (
-              <div className='founder modal'>
+              <div className='founder modal' key={index}>
                 <h2>Founder {index === 0 ? 'A' : 'B'}</h2>
                 <div className='log'>
                   <label>Quick reminder: what are you building?</label>
@@ -94,6 +98,11 @@ class Vote extends Component {
               </div>
             );
           })}
+          {pickedLogs.length === 0 ? (
+            <div className='modal loading'>Loading founder logs...</div>
+          ) : (
+            ''
+          )}
         </div>
         <div className='modal form'>
           <h2>Vote</h2>
@@ -136,8 +145,6 @@ Vote.propTypes = {
 };
 
 const mapStateToProps = state => {
-  console.log('stateVote', state);
-
   return {
     logs: state.firestore.data.logs,
   };

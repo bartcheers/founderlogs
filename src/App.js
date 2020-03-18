@@ -8,7 +8,7 @@ import Vote from './components/Vote/Vote';
 import { useSelector } from 'react-redux';
 
 function App() {
-  const activeView = useSelector(state => state.menuActiveView);
+  const activeView = useSelector(state => state.menu);
 
   return (
     <div className='App'>
