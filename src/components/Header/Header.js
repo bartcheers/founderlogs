@@ -7,6 +7,7 @@ const Header = props => {
     <header>
       <div className='wrap'>
         <Logo />
+        <span>Log your progress, get feedback, earn payouts.</span>
       </div>
     </header>
   );

@@ -38,14 +38,6 @@ class Menu extends Component {
             Vote {activeView === 1 ? '>' : ''}
           </button>
         </div>
-        <div className='modal menu'>
-          <h2>Why FounderLogs?</h2>
-          <ul>
-            <li>Earn pay outs</li>
-            <li>Get feedback</li>
-            <li>Filter ideas</li>
-          </ul>
-        </div>
         <Leaderboard />
       </div>
     );
