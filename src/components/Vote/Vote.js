@@ -3,8 +3,7 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { castVote } from '../../actions/voteActions.js';
 import './vote.scss';
-import { firestoreConnect } from 'react-redux-firebase';
-import { compose } from 'redux';
+import { getRandomLogDB } from '../../db';
 
 class Vote extends Component {
   constructor(props) {
@@ -13,68 +12,70 @@ class Vote extends Component {
       vote: 0,
       feedbackA: '',
       feedbackB: '',
+      pickedLogs: [],
     };
-
-    console.log('state in vote', this.state);
 
     this.onChange = this.onChange.bind(this);
     this.onVote = this.onVote.bind(this);
+    this.onToggle = this.onToggle.bind(this);
+  }
+
+  async componentDidMount() {
+    const logA = await getRandomLogDB();
+    const logB = await this.pickLogAvoidDuplicate(logA.id);
+
+    this.setState({ pickedLogs: [logA, logB] });
+  }
+
+  async pickLogAvoidDuplicate(dupID) {
+    return new Promise(async function cb(resolve, reject) {
+      const logB = await getRandomLogDB();
+
+      //avoid duplicate
+      if (logB.id === dupID) {
+        cb(resolve, reject);
+      } else {
+        resolve(logB);
+      }
+    });
   }
 
   onChange(e) {
     this.setState({ [e.target.name]: e.target.value });
   }
 
+  onToggle(e) {
+    this.setState({ vote: e.target.checked === true ? 1 : 0 });
+  }
+
   onVote(e) {
     e.preventDefault();
 
     const vote = {
-      feedbackA: this.state.feedbackA,
-      feedbackB: this.state.feedbackB,
-      voteFor: 'LOGID GOES HERE', // Todo: replace
-      voteAgainst: 'LOGID GOES HERE', // Todo: replace
-      timeStamp: 'TIMESTAMP GOES HERE', // Todo: Find out if we can access FB native timestamp instead.
+      voteFor: {
+        id: this.state.pickedLogs[this.state.vote].id,
+        feedback: this.state.vote === 0 ? this.state.feedbackA : this.state.feedbackB,
+      },
+      voteAgainst: {
+        id: this.state.pickedLogs[1 - this.state.vote].id,
+        feedback: this.state.vote === 1 ? this.state.feedbackA : this.state.feedbackB,
+      },
     };
 
     this.props.castVote(vote);
   }
 
-  pickRandom(i, avoidDuplicateI) {
-    if (i <= 1) {
-      return 0;
-    }
-
-    let pick = Math.round(Math.random() * (i - 1));
-
-    if (pick === avoidDuplicateI) {
-      pick = this.pickRandom(i, avoidDuplicateI);
-    }
-
-    return pick;
-  }
-
   render() {
-    const { logs } = this.props;
-    let logList;
-    let pickedLogs = [];
-
-    if (typeof logs === 'object' && logs !== null) {
-      logList = Object.values(logs);
-
-      const pickA = this.pickRandom(logList.length, null);
-      const pickB = this.pickRandom(logList.length, pickA);
-
-      pickedLogs[0] = logList[pickA];
-      pickedLogs[1] = logList[pickB];
-    }
-
     return (
       <div className='vote vertical'>
         <div className='horizontal log-wrap'>
-          {pickedLogs.map((log, index) => {
+          {this.state.pickedLogs.map((log, index) => {
             return (
               <div className='founder modal' key={index}>
-                <h2>Founder {index === 0 ? 'A' : 'B'}</h2>
+                <h2>
+                  Founder {index === 0 ? 'A' : 'B'}{' '}
+                  {this.state.vote === index ? <span>- Your pick</span> : null}
+                </h2>
                 <div className='log'>
                   <label>Quick reminder: what are you building?</label>
                   {log.reminder.split('\n').map((i, key) => {
@@ -98,7 +99,7 @@ class Vote extends Component {
               </div>
             );
           })}
-          {pickedLogs.length === 0 ? (
+          {this.state.pickedLogs.length === 0 ? (
             <div className='modal loading'>Loading founder logs...</div>
           ) : (
             ''
@@ -124,12 +125,26 @@ class Vote extends Component {
             </div>
             <div className='horizontal'>
               <div className='feedback'>
-                <label>Feedback for founder A</label>
-                <textarea name='feedbackA' onChange={this.onChange} value={this.state.feedbackA} />
+                <label>
+                  Feedback for founder A {this.state.vote === 0 ? <span>- Your pick</span> : null}
+                </label>
+                <textarea
+                  required
+                  name='feedbackA'
+                  onChange={this.onChange}
+                  value={this.state.feedbackA}
+                />
               </div>
               <div className='feedback'>
-                <label>Feedback for founder B</label>
-                <textarea name='feedbackB' onChange={this.onChange} value={this.state.feedbackB} />
+                <label>
+                  Feedback for founder B {this.state.vote === 1 ? <span>- Your pick</span> : null}
+                </label>
+                <textarea
+                  required
+                  name='feedbackB'
+                  onChange={this.onChange}
+                  value={this.state.feedbackB}
+                />
               </div>
             </div>
             <button type='submit'>Submit</button>
@@ -144,14 +159,4 @@ Vote.propTypes = {
   castVote: PropTypes.func.isRequired,
 };
 
-const mapStateToProps = state => {
-  return {
-    logs: state.firestore.data.logs,
-  };
-};
-
-export default compose(
-  firestoreConnect([{ collection: 'logs' }]),
-  connect(mapStateToProps),
-  connect(null, { castVote }),
-)(Vote);
+export default connect(null, { castVote })(Vote);

@@ -31,6 +31,10 @@ class Log extends Component {
       completed: this.state.completed,
       planned: this.state.planned,
       buyIn: this.state.buyIn * 10,
+      timestamp: Date.now(),
+      votersFor: [],
+      votersAgainst: [],
+      feedback: [],
     };
 
     this.props.createLog(log);

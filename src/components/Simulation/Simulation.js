@@ -3,14 +3,14 @@ import { useSelector, useDispatch } from 'react-redux';
 import {
   setSimulationScore,
   setSimulationBuyIn,
-  setSimulationMultiplier,
+  // setSimulationMultiplier,
 } from '../../actions/simulationActions.js';
 import './simulation.scss';
 
 export default function Simulation() {
   const score = useSelector(state => state.simulation.score);
   const buyIn = useSelector(state => state.simulation.buyIn);
-  const multiplier = useSelector(state => state.simulation.multiplier);
+  // const multiplier = useSelector(state => state.simulation.multiplier);
   const dispatch = useDispatch();
 
   return (
@@ -25,14 +25,14 @@ export default function Simulation() {
         value={buyIn}
         onChange={e => dispatch(setSimulationBuyIn(e.target.value))}
       />
-      <label>Multiplier: {multiplier}x</label>
+      {/* <label>Multiplier: {multiplier}x</label>
       <input
         type='range'
         min='1'
         max='100'
         value={multiplier}
         onChange={e => dispatch(setSimulationMultiplier(e.target.value))}
-      />
+      /> */}
       <label>Score: {score}% of votes</label>
       <input
         type='range'

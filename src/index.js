@@ -5,37 +5,15 @@ import App from './App';
 import * as serviceWorker from './serviceWorker';
 import { Provider } from 'react-redux';
 import { createStore, applyMiddleware } from 'redux';
-import thunk from 'redux-thunk';
 import rootReducer from './reducers';
-import { createFirestoreInstance, getFirestore, reduxFirestore } from 'redux-firestore';
-import { ReactReduxFirebaseProvider, getFirebase } from 'react-redux-firebase';
-import fbConfig from './config/fbConfig';
-import firebase from 'firebase/app';
 import { composeWithDevTools } from 'redux-devtools-extension';
+import thunk from 'redux-thunk';
 
-const initialState = {};
-
-const store = createStore(
-  rootReducer,
-  initialState,
-  composeWithDevTools(
-    applyMiddleware(thunk.withExtraArgument({ getFirestore, getFirebase })),
-    reduxFirestore(firebase, fbConfig),
-  ),
-);
-
-const rrfProps = {
-  firebase,
-  config: fbConfig,
-  dispatch: store.dispatch,
-  createFirestoreInstance,
-};
+const store = createStore(rootReducer, composeWithDevTools(applyMiddleware(thunk)));
 
 ReactDOM.render(
   <Provider store={store}>
-    <ReactReduxFirebaseProvider {...rrfProps}>
-      <App />
-    </ReactReduxFirebaseProvider>
+    <App />
   </Provider>,
   document.getElementById('root'),
 );
