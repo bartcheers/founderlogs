@@ -92,7 +92,6 @@ export const getLeaderboardDB = () => {
           log['id'] = doc.id;
           leaderboard.push(log);
         });
-        console.log('leaderboard', leaderboard);
 
         resolve(leaderboard);
       })

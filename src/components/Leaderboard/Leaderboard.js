@@ -16,7 +16,6 @@ class Vote extends Component {
   async componentDidMount() {
     const leaderboard = await getLeaderboardDB();
 
-    const totalFounders = leaderboard.length;
     const highestVoteCount = leaderboard.reduce(
       (acc, cur) => (cur.votes > acc ? cur.votes : acc),
       0,
