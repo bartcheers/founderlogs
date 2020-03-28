@@ -51,6 +51,7 @@ export const updateWinningLogDB = voteData => {
   db.doc(voteData.id)
     .update({
       votersFor: firebase.firestore.FieldValue.arrayUnion('TODO'),
+      votes: firebase.firestore.FieldValue.increment(1),
       feedback: firebase.firestore.FieldValue.arrayUnion({
         userID: 'TODO',
         feedback: voteData.feedback,
@@ -74,7 +75,29 @@ export const updateLosingLogDB = voteData => {
 };
 
 export const createLogDB = logData => {
-  db.add({ ...logData, userID: 'TODO' })
+  db.add({ ...logData, userID: 'TODO', votes: 0 })
     .then(() => {})
     .catch(err => {});
+};
+
+export const getLeaderboardDB = () => {
+  return new Promise((resolve, reject) => {
+    let leaderboard = [];
+    db.orderBy('votes', 'desc')
+      .limit(50)
+      .get()
+      .then(snapshot => {
+        snapshot.forEach(doc => {
+          let log = doc.data();
+          log['id'] = doc.id;
+          leaderboard.push(log);
+        });
+        console.log('leaderboard', leaderboard);
+
+        resolve(leaderboard);
+      })
+      .catch(err => {
+        console.log('Error getting documents', err);
+      });
+  });
 };

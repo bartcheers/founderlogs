@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import Leaderboard from '../Leaderboard/Leaderboard';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { setActiveView } from '../../actions/menuActions.js';
@@ -45,6 +46,7 @@ class Menu extends Component {
             <li>Filter ideas</li>
           </ul>
         </div>
+        <Leaderboard />
       </div>
     );
   }

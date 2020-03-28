@@ -1,0 +1,19 @@
+.leaderboard {
+  margin: 0 1em 1em 0;
+
+  .stats {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 1em;
+
+    label {
+      font-size: 0.9em;
+    }
+
+    > div {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+  }
+}
